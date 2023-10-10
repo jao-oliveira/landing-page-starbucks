@@ -21,6 +21,7 @@
 :root{
         --color-background-1:#ffffff;
         --color-background-2:#0e0e0e;
+        --color-background-menu:#213932;
         --color-font-1:#ededed;
         --color-font-hover:#1c7343;
         --color-font-2:#61dafb;
@@ -29,22 +30,32 @@
         --color-box-shadow-1:rgba(121, 121, 136, 0.2) 0px 3px 5px 0px;
         --color-text-shadow: rgb(255, 255, 255) 0.1em 0.1em 0.3em;
         --color-text-shadow-1: #5ee2ff 0.1em 0.1em 0.5em;
+        --sombra-de-caixa: rgba(0, 0, 0, 0.16) 0px 1px 4px;
      }
      
 
 
-html, body{
-    height: 100%;
-    overflow: hidden;
+
+html,
+body{
+   scroll-behavior: smooth;
+   scroll-padding-top: 3rem;
+   transition: 0.3s;
 }
+
+a{
+    text-decoration: none;
+    
+}
+   
+
 
 /*nav bar*/
 
-#nav-container{
+#nav{
     background-color: var(--color-background-1);
     width: 100%;
-    height: 120px;
-    flex-direction: column;
+    top: 0;
     justify-content: center;
     position: fixed;
     -webkit-box-pack: center;
@@ -55,28 +66,30 @@ html, body{
 
 .navbar{
     display: flex;
-    padding: 10px 0;
     max-width: 1100px;
     justify-content: space-between;
     align-items: center;
     justify-content: center;
     margin: 0 auto;
     gap: 20px;
+
 }
 
 .logo,
 .nav-links{
-    /* width: 50%; */
-    padding: 0 2%;
+    padding: 1.5% 2%;
 }
 
-.logoimg{
-   
-   width: 100px;
+.logoimg img{
+    width: 58px;
 }
+   
+  
+
 
  .menu{
     text-decoration: none;
+    margin: 0;
 } 
 
 .menu li{
@@ -93,10 +106,15 @@ html, body{
     color: rgb(71, 71, 71);
     text-decoration: none;
     font-weight: bold;
-    margin-right: 20px;
     font-size: 20px;
     padding: 10px;
+    
 }
+.menu a:not(.last){
+    margin-right: 20px;
+}
+
+
 
 .menu a:hover{
     color: var(--color-font-hover);
@@ -105,38 +123,50 @@ html, body{
 
 
 
+/*MENU MOBILE*/
+
+#nav-mobile{
+    display: none;
+    background-color: var(--color-background-1);
+    box-shadow: var(--sombra-de-caixa);
+}
+
+
+
+
+
+
+
 /*sobre*/
 
  #sobre{
     margin: 0 auto;
-    max-width: 1100px;
+    max-width: 1000px;
     margin-top: 7rem;
-    padding-top: 50px ;
-    width: 100%;
-    padding: 0 2%;
-    padding: 5rem 0rem;
+    margin-bottom: 5rem;
+    padding-top: 50px;
+    padding: 5rem 1rem;
     display: flex; 
-    gap: 1px;
+    gap: 50px; 
 }
 
 
 
 .cicle-container{
-   width: 50%;
+   width: 100%;
+   display: flex;
+   justify-content: center;
  
 }
 
-div.circle{
-    position: relative;
-
+.circle{
     transform: translateY(-50%);
     right: -20%;
-    width: 500px;
-    height: 500px;
+    width: 450px;
+    height: 450px;
     border-radius: 50%;
     background-color: #1c7343;
-    transition: 0.6s ease-in-out;
-    
+    transition: 0.5s ease-in-out;
     animation-name: floating;
     animation-duration: 3s;
     animation-iteration-count: infinite;
@@ -151,35 +181,42 @@ div.circle{
 }
 
 
-.social-midia{
-    width: 100%;
-    margin: 0 auto;
+
+.social-midia {
+    margin: 0 ;
+    margin-right: 0;
     justify-content: center;
     position: relative;
-    bottom: 75%;
-    left: 75%;
+    bottom:80%;
+    left:80% ;
+    width: 30px;
 }
 
-.social-midia #icons-rede-social{
+.social-midia a{
+    text-decoration: none;
+}
+
+.bi-facebook,
+.bi-instagram,
+.bi-twitter-x{
+    font-size: 25px;
+    color: var(--color-background-1);
     display: flex;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
     width: 25px;
     height: 25px;
-    filter: invert(1);
     transition: 0.5s;
-    fill: var(--color-background-1);
 }
 
-.social-midia #icons-rede-social:hover{
-    scale: 1.2;
+
+.bi:hover{
+    scale: 1.5;
     transition-duration: 0.3s;
+
     
 }
 
-.center{
-    width: 50%;
-    padding: 3rem 1rem;
-}
+
 
 .txt-sobre {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -189,17 +226,17 @@ div.circle{
     font-size: 60px;
 }
  .txt-sobre span{
-    font-size: 80px;
+    font-size: 70px;
  }
 
 .txt-sobre p{
-    max-width: 700px;
+    max-width: 500px;
 }
 
 .txt-sobre button{
     margin-top: 30px;
     font-size: 15px;
-    width: 120px;
+    width: 150px;
     height: 35px;
     border-radius: 20px;
     background-color: #1c7343;
@@ -209,6 +246,10 @@ div.circle{
     transition: 0.5s ease-out;
 }
 
+.txt-sobre  a{
+    color: var(--color-font-1);
+}
+
 .txt-sobre button:hover{
     scale: 1.1;
     box-shadow: 1px 1px 1px 1px rgba(102, 102, 102, 0.2);
@@ -216,9 +257,9 @@ div.circle{
 }
 
 
-.roda-pe-container{
+.roda-pe {
    margin: 0 auto;
-   width: 100%;
+   
     z-index: 10;
     top: 0px;
     left: 0px;
@@ -245,4 +286,214 @@ div.circle{
 .roda-pe li:hover{
     transform: translateY(-20px);
     scale: 1.8;
+}
+
+
+/*mobile*/
+
+@media (max-width:917px){
+    .sobre{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .txt-sobre{
+            text-align: center;
+        }
+    
+    
+        .txt-sobre h1{
+            text-align: center;
+        }
+
+
+        .txt-sobre p{
+            text-align: center;
+        }
+  
+      }
+}
+
+
+@media (max-width:768px) {
+
+    #nav{
+        display: none;
+    }
+
+  
+    #nav-mobile{
+        display: block;
+        background-color: var(--color-background-1);
+        box-shadow: var(--sombra-de-caixa);
+    }
+    .navbar{
+        margin: 0 3%;
+        display: flex;
+        justify-content: space-between;
+        
+    }
+    .nav-links-mobile{
+        display: none;
+        position: absolute;
+        top: 0px;
+        right: -50px;
+        padding: 1rem;
+        background-color: var(--color-background-menu);
+        width: 75%;
+        height: 100vh;
+    }
+
+    .menu-drop{
+        position: relative;
+        top: -150px;
+        width: 50%;
+    }
+
+    .nav-links-mobile a{
+        text-decoration: none;
+        color: var(--color-font-1);
+        font-size: 20px;
+    }
+
+    .bi-x-lg{
+        color: var(--color-font-hover)!important; 
+        position: relative;
+        right: -60%;
+        top: -45px;
+        font-size: 20px;
+        width: 50%;
+        /* z-index: 11; */
+    }
+
+    .bi-x-lg:hover{
+        color: var(--color-background-1)!important; 
+
+    }
+
+    .bi-list{
+        font-size: 30px;
+        z-index: 11;
+        color: var(--color-font-hover)!important; 
+        cursor: pointer;
+    }
+
+    .menu-drop li{
+        list-style: none;
+        color: #1c7343;
+    }
+
+    /*Sobre*/
+
+    .sobre{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+    }
+    .txt-sobre{
+        text-align: center;
+    }
+
+
+    .txt-sobre h1,
+    .txt-sobre p{
+        text-align: left;
+    }
+
+ 
+
+
+
+
+ /*roda pe*/
+
+ .roda-pe li img{
+    max-width: 50px;
+  
+}
+ 
+        
+}
+
+@media (max-width:550px) {
+    .circle{
+        width: 250px;
+        height: 250px;
+       
+    }
+
+    .starbucks{
+        width: 200px;
+    }
+
+
+    .social-midia {
+        margin: 0 ;
+        margin-right: 0;
+        justify-content: center;
+        position: relative;
+        bottom:85%;
+        left:80% ;
+        width: 30px;
+    }
+    
+    .social-midia a{
+        text-decoration: none;
+    }
+    
+    .bi-facebook,
+    .bi-instagram,
+    .bi-twitter-x{
+        font-size: 18px;
+        color: var(--color-background-1);
+        
+        margin-bottom: 15px;
+        transition: 0.5s;
+    }
+    
+}
+
+
+@media (max-width:340px) {
+
+
+    .circle{
+        width: 200px;
+        height: 200px;
+       
+    }
+
+    .starbucks{
+        width: 150px;
+    }
+
+
+    .social-midia {
+        margin: 0 ;
+        margin-right: 0;
+        justify-content: center;
+        position: relative;
+        bottom:85%;
+        left:75% ;
+        width: 30px;
+    }
+    
+    .social-midia a{
+        text-decoration: none;
+    }
+    
+    .bi-facebook,
+    .bi-instagram,
+    .bi-twitter-x{
+        font-size: 18px;
+        color: var(--color-background-1);
+        margin-bottom: 15px;
+        transition: 0.5s;
+    }
+
+    .roda-pe li img{
+        width: 40px;
+      
+    }
+
 }
